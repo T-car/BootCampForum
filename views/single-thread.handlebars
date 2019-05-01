@@ -1,0 +1,43 @@
+<div class="row wow fadeIn">
+
+    <!--Grid column-->
+    {{#with forums}}
+    <div class="col-md-12 mb-5">
+        <div class="card">
+            <h5 class="card-header h5"><span id="display_title">{{post_title}}</span></h5>
+            <div class="card-body">
+
+                <h5 class="card-title"><span id="display_author">Thread Author</span></h5>
+                <p class="card-text"><span id="display_body">{{post_body}}</span>
+                </p>
+                <a href="/api/edit/{{id}}" class="btn btn-primary">Edit Thread</a>
+                <button type="button" class="btn btn-primary display_post_delete" data-threadid="{{id}}">Delete Thread</button>
+
+            </div>
+        </div>
+         <div class="rounded-bottom cloudy-knoxville-gradient lighten-1 text-center pt-3">
+                <ul class="list-unstyled list-inline font-medium">
+                    <li class="list-inline-item pr-2 black-text"><i class="far fa-clock pr-1"></i><span
+                            id="display_post_recent_timestamp">04/24/2019</span>
+                    </li>
+                    <li class="list-inline-item pr-2"><a href="#" class="black-text"><i
+                                class="far fa-comments pr-1"></i><span id="display_post_recent_comments">12</span></a>
+                    </li>
+                    <li class="list-inline-item pr-2"><a href="#" class="black-text"><i class="far fa-thumbs-up pr-1">
+                            </i><span id="display_post_recent_thumbs_up">21</span></a></li>
+                    <li class="list-inline-item"><a href="#" class="black-text"><i class="far fa-thumbs-down pr-1">
+                            </i><span id="display_post_recent_thumbs_down">5</span></a></li>
+                </ul>
+            </div>
+    </div>
+    {{/with}}
+</div>
+
+
+{{!-- {{#each categories}}
+    {{#if @index '<' 4}}
+        <li class="navPages-item category-{{name}} category-{{id}}">
+            <a class="navPages-action" href="{{url}}">{{name}}</a>
+        </li>
+    {{/if}}
+{{/each}} --}}

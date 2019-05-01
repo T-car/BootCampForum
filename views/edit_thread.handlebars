@@ -1,0 +1,47 @@
+<div class="row wow fadeIn">
+   {{#with forums}}
+    <div class="col-md-12 mb-5">
+        <div class="card">
+            <h5 class="card-header h5">Edit Thread</h5>
+            <div class="card-body">
+                <h5 class="card-title">Thread Author (Guest)</h5>
+
+                <form id="edit_forum">
+                    <div class="form-group shadow-textarea">
+                        <i class="fas fa-user prefix"></i>
+                        <label for="CHANGE_THIS">Thread Title</label>
+                        <input type="text" id="post_title" class="form-control" value="{{post_title}}">
+
+                        <i class="fas fa-user prefix pt-1"></i>
+                        <label for="CHANGE_THIS">Thread Category</label>
+                        <!-- <input type="text" id="post_category" class="form-control"> -->
+                        <select class="custom-select" id="post_category" value="{{post_category}}"></select>
+
+                        <i class="fas fa-users prefix pt-1"></i>
+                        <label for="CHANGE_THIS">Thread Body</label>
+                        <textarea class="form-control z-depth-1" id="post_body" rows="3">{{post_body}}</textarea>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary display_edit_button" id="edit_button" data-editid="{{id}}">Submit Thread</button>
+            
+            </form>
+            </div>
+             <div class="rounded-bottom cloudy-knoxville-gradient lighten-1 text-center pt-3">
+                <ul class="list-unstyled list-inline font-medium">
+                    <li class="list-inline-item pr-2 black-text"><i class="far fa-clock pr-1"></i><span
+                            id="display_post_recent_timestamp">04/24/2019</span>
+                    </li>
+                    <li class="list-inline-item pr-2"><a href="#" class="black-text"><i
+                                class="far fa-comments pr-1"></i><span id="display_post_recent_comments">12</span></a>
+                    </li>
+                    <li class="list-inline-item pr-2"><a href="#" class="black-text"><i class="far fa-thumbs-up pr-1">
+                            </i><span id="display_post_recent_thumbs_up">21</span></a></li>
+                    <li class="list-inline-item"><a href="#" class="black-text"><i class="far fa-thumbs-down pr-1">
+                            </i><span id="display_post_recent_thumbs_down">5</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+     
+    {{/with}}
+</div>

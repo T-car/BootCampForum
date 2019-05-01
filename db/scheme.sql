@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS forums_db;
+CREATE DATABASE forums_db;
