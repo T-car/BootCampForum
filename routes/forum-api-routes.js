@@ -55,16 +55,17 @@ module.exports = function(app) {
 });
 
   // POST route for saving a new post
-  // app.post("/api/forums", function(req, res) {
-  //   db.Forum.create({
-  //     post_title: req.body.post_title,
-  //     post_body: req.body.post_body
-  //     // category: req.body.post_category
-  //   })
-  //   .then(function(dbPost) {
-  //     res.json(dbPost);
-  //   });
-  // });
+  app.post("/api/forums", function(req, res) {
+  db.Forum.create({
+       post_title: req.body.post_title,
+       post_body: req.body.post_body,
+       CategoryId: req.body.CategoryId,
+       AuthorId: req.body.AuthorId
+     })
+     .then(function(dbPost) {
+       res.json(dbPost);
+    });
+  });
 
   // DELETE route for deleting posts
   app.delete("/api/forums/:id", function(req, res) {

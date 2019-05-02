@@ -6,6 +6,36 @@ var postCategorySelect = $("#post_category");
 var postEditId = $("#edit_button").attr('data-editid')
 
 postCategorySelect.val("Personal");
+// added by kamal for category drop down
+// Getting the Category dropdown
+var categorySelect = $("#post_category");
+var categoryId;
+getCategory();
+// A function to get Categories and then render our list of Categories
+  function getCategory() {
+    $.get("/api/category", renderCategoryList);
+  }
+  // Function to either render a list of categories
+  function renderCategoryList(data) {
+    $(".hidden").removeClass("hidden");
+    var rowsToAdd = [];
+    for (var i = 0; i < data.length; i++) {
+      rowsToAdd.push(createCategoryRow(data[i]));
+    }
+    categorySelect.empty();
+    categorySelect.append(rowsToAdd);
+    categorySelect.val(categoryId);
+  }
+
+  // Creates the category options in the dropdown
+  function createCategoryRow(category) {
+    var listOption = $("<option>");
+    listOption.attr("value", category.id);
+    listOption.text(category.name);
+    return listOption;
+  }
+  // creating category list ends here
+
 // Adding an event listener for when the form is submitted
 $(cmsForm).on("submit", function handleFormSubmit(event) {
     event.preventDefault();
@@ -18,7 +48,8 @@ $(cmsForm).on("submit", function handleFormSubmit(event) {
     var newPost = {
         post_title: titleInput.val().trim(),
         post_body: bodyInput.val().trim(),
-        post_category: postCategorySelect.val()
+        CategoryId: categorySelect.val(),
+        AuthorId: 1        
     };
 
     console.log(newPost);
