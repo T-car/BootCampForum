@@ -52,5 +52,7 @@ module.exports = function(sequelize, DataTypes) {
       });
     };
 
+
+
     return Forum;
 }

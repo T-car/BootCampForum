@@ -26,7 +26,7 @@ module.exports = function (app) {
       .catch(function (err) {
         console.log(err)
       })
-  }); 
+  });
 
 
   // cms route loads cms.html
@@ -56,13 +56,21 @@ module.exports = function (app) {
     db.Forum.findOne({
       where: {
         id: req.params.id
-      }
-      // include: [db.Author]
+      },
+      include: [
+        {
+          model: db.Response,
+          include: [
+            {
+              model: db.Author
+            }
+          ]
+        }]
     }).then(function (data) {
       // console.log("-------------------------" + "/n")
       // console.log(data.post_title);
       // console.log("-------------------------" + "/n")
-      //res.json(data);
+      // res.json(data);
       res.render('single-thread', {
         forums: data
       });
