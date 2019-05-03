@@ -1,4 +1,3 @@
-
 var bodyInput = $("#post_body");
 var titleInput = $("#post_title");
 var cmsForm = $("#post_forum");
@@ -50,7 +49,7 @@ $(cmsForm).on("submit", function handleFormSubmit(event) {
         post_title: titleInput.val().trim(),
         post_body: bodyInput.val().trim(),
         CategoryId: categorySelect.val(),
-        AuthorName: 1
+        AuthorId: 1
     };
 
     console.log(newPost);
@@ -111,17 +110,15 @@ $(document).ready(function () {
 function editPost(EPost) {
     console.log("editPost is running!")
     $.ajax({
-            type: "PUT",
-            url: "/api/forums/" + postEditId,
-            data: EPost,
-            error: function (req, err) {
-                console.log('my message' + err);
-            },
-            success: function (response) {
+        type: "PUT",
+        url: "/api/forums/" + postEditId,
+        data: EPost,
+        error: function (req, err) { console.log('my message' + err); },
+        success: function (response) {
 
-                console.log(response); //does not print in the console
-            }
-        })
+            console.log(response);//does not print in the console
+        }
+    })
         .then(function () {
             window.location.href = "/forum";
         });
@@ -148,12 +145,6 @@ $('#modal_verify').on("click", function () {
 $('#modal_login').on("click", function () {
 
     login();
-
-})
-
-$('#logout_button').on("click", function () {
-
-    logout();
 
 })
 
@@ -251,7 +242,7 @@ function verify() {
             alert('<div class="alert alert-success"> <strong>Successfully Verified !<br></strong> Now you can login : please click <a href="./login.html"><strong>here</strong></a><br>Thank You!. </div>');
             console.log('call result: ' + result);
             $('#modal_register').hide();
-            window.location.replace("/");
+            window.location.replace("/"); 	
 
         }
 
@@ -317,14 +308,14 @@ function login() {
                 name: IDToken.payload.name,
                 email: username,
             };
-
+            
             console.log(newAuthor);
-
+        
             submitAuthor(newAuthor);
-
-
-            // Submits a new post and brings user to blog page upon completion
-
+       
+        
+        // Submits a new post and brings user to blog page upon completion
+        
         },
         onFailure: function (err) {
             alert(err.message || JSON.stringify(err));
@@ -339,64 +330,3 @@ function submitAuthor(Author) {
         window.location.href = "/";
     });
 }
-
-
-
-// log out function
-
-function logout() {
-
-if (cognitoUser != null) {
-    cognitoUser.signOut();
-    console.log("you have been signed out")
-
-}
-}
-
-
-
-  var data = {
-    UserPoolId: 'us-east-2_rzFJkIGfu', // your user pool id here
-    ClientId: '3hte44uuqb3nsakj11mjtb86s0' // your app client id here
-};
-var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
-var cognitoUser = userPool.getCurrentUser();
-
-if (cognitoUser != null) {
-    cognitoUser.getSession(function (err, session) {
-        if (err) {
-            alert(err);
-            return;
-        }
-
-        var CurrentIDToken = session.getIdToken()
-        var LoggedIn = session.isValid();
-
-        console.log('session validity: ' + session.isValid());
-
-        if (LoggedIn === true) {
-            console.log('You are successfully logged in!')
-            console.log('User: ' + CurrentIDToken.payload.name)
-            console.log('Email: ' + CurrentIDToken.payload.email)
-            console.log('Verification Status: ' + CurrentIDToken.payload.email_verified)
-            console.log('Forum Name: ' + CurrentIDToken.payload)
-        } else {
-            console.log('You are not logged in! Please either log in or register to continue!')
-        }
-
-        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-            IdentityPoolId: 'us-east-2:c77291cb-be87-40ed-8b14-d569895d7cd3', // your identity pool id here
-            Logins: {
-                // Change the key below according to the specific region your user pool is in.
-                'cognito-idp.us-east-2.amazonaws.com/us-east-2_rzFJkIGfu': session.getIdToken().getJwtToken()
-            }
-        });
-
-        console.log('Access Token + ' + session.getAccessToken().getJwtToken());
-            console.log('****************************************************************')
-            console.dir(session.getIdToken())
-
-        // Instantiate aws sdk service objects now that the credentials have been updated.
-        // example: var s3 = new AWS.S3();
-
-    }); }

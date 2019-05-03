@@ -44,6 +44,26 @@ module.exports = function (app) {
       // console.log(data.post_title);
       // console.log("-------------------------" + "/n")
       // res.json(data);
+      // fetching category name
+      // var dataObj;
+      // //console.log(data.dataValues.CategoryId)
+      // db.Category.findOne({
+      //   where: {
+      //     id: data.dataValues.CategoryId
+      //   }
+      // }).then(function (catName) {
+      //   //console.log(catName.dataValues.name)
+      //   dataObj = {
+      //     id: data.dataValues.id,
+      //     post_title: data.dataValues.post_title,
+      //     post_category: catName.dataValues.name,
+      //     post_body: data.dataValues.post_body
+      //   }        
+      // console.log(dataObj)
+      // });      
+      // // fetching ends here
+
+
       res.render('edit_thread', {
         forums: data
       });
