@@ -1,13 +1,12 @@
-// *****************************************************************************
-// Server.js - This file is the initial starting point for the Node/Express server.
-//
-// ******************************************************************************
 // *** Dependencies
 // =============================================================
 var express = require("express");
 var exphbs = require("express-handlebars");
 // var bodyParser = require('body-parser');
 var path = require('path');
+
+//Requiring Redis
+var redis = require('redis');
 
 
 // Sets up the Express App
@@ -50,9 +49,9 @@ db.sequelize
     console.error('Unable to connect to the database:', err);
   });
 
-// Syncing our sequelize models and then starting our Express app
+// Syncing Sequelize & Express Server Start
 // =============================================================
-db.sequelize.sync({ force:true }).then(function() { // pass { force: true } parameter to overwrite the table with an empty one
+db.sequelize.sync({ }).then(function() { // { force: true } if models change
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

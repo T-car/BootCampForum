@@ -1,225 +1,501 @@
 <!-- Heading -->
 <div class="card mb-4 wow fadeIn">
-
+    
     <!--Card content-->
     <div class="card-body d-sm-flex justify-content-between">
-
         <h4 class="mb-2 mb-sm-0 pt-1">
             <a href="https://mdbootstrap.com/docs/jquery/" target="_blank">Home Page</a>
             <span>/</span>
             <span>Dashboard</span>
         </h4>
-
         <form class="d-flex justify-content-center">
             <!-- Default input -->
             <input type="search" placeholder="Type your query" aria-label="Search" class="form-control">
             <button class="btn btn-primary btn-sm my-0 p" type="submit">
                 <i class="fas fa-search"></i>
             </button>
-
         </form>
-
     </div>
-
 </div>
 <!-- Heading -->
 
+<!-- Grid row -->
+
+{{!-- <div class="row text-center pb-5"> --}}
+
+
+  {{!-- <!-- Grid column -->
+  <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+    <!--Featured image-->
+    <div class="view overlay rounded z-depth-1">
+      <img src="https://ceafitness.com/wp-content/uploads/2019/05/coding1.jpg" class="img-fluid" alt="Sample project image">
+      <a>
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+    <!--Excerpt-->
+    <div class="card-body pb-0">
+      <h4 class="font-weight-bold my-3">{{post_title}}</h4>
+      <p class="black-text">{{post_body}}
+      </p>
+      <a class="btn btn-indigo btn-sm" href="/forum/{{id}}"><i class="fas fa-clone left"></i> View Thread</a>
+    </div>
+  </div>
+  <!-- Grid column --> --}}
+
+  <!-- Card deck -->
+<div class="card-deck">
+{{#each forums}}
+
+  <!-- Card -->
+  <div class="card mb-4">
+    <!--Card image-->
+    <div class="view overlay">
+      <img class="card-img-top" src="https://ceafitness.com/wp-content/uploads/2019/05/coding2.jpg">
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+    <!--Card content-->
+    <div class="card-body">
+      <!--Title-->
+      <h4 class="card-title">{{post_title}}</h4>
+      <!--Text-->
+      <p class="card-text">{{post_body}}</p>
+      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+      <a href="/forum/{{id}}" type="button" class="btn btn-light-blue btn-md">Open Thread</a>
+    </div>
+  </div>
+  <!-- Card -->
+  
+    
+  {{/each}}
+  </div>
+ 
+  
+  <!-- Grid column -->
 <!--Grid row-->
 <div class="row wow fadeIn">
-
     <!--Grid column-->
-    <div class="col-md-4 mb-4">
+    <div class="col-md-3 mb-3">
+
+        
         <!-- Card -->
         <div class="card">
-
             <!-- Card image -->
             <div class="view overlay">
-                <img class="card-img-top" img src="public/img/coding.jpg" alt="Card image cap">
+                <img class="card-img-top" id="article_picture1" src="public/img/coding.jpg" alt="Card image cap">
                 <a>
                     <div class="mask rgba-white-slight"></div>
                 </a>
             </div>
-
             <!-- Button -->
             <!-- <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i
                                 class="fas fa-chevron-right pl-1"></i></a> -->
-
             <!-- Card content -->
             <div class="card-body">
-
                 <!-- Title -->
-                <h4 class="card-title"><span id="display_post_recent_title"></span>Recent Post Title</h4>
+                <h4 class="card-title"><span id="article_title1"></span></h4>
                 <hr>
                 <!-- Text -->
-                <p class="card-text"><span id="display_post_recent_body"></span>This is where a recent post
-                    text would go! The ID used is
-                    '#display_post_recent_body'</p>
-
+                <p class="card-text"><span id="article_body1"></span></p>
             </div>
-
             <!-- Card footer -->
             <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
                 <ul class="list-unstyled list-inline font-small">
                     <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><span
-                            id="display_post_recent_timestamp">04/24/2019</span>
+                            id="display_post_recent_timestamp1"></span>
                     </li>
-                    <li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-                                class="far fa-comments pr-1"></i><span id="display_post_recent_comments">12</span></a>
+                    <li class="list-inline-item pr-2"><a href="#" class="white-text" id="display_post_recent_comments1"><i class="far fa-comments pr-1"></i> Read More</a>
                     </li>
-                    <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-thumbs-up pr-1">
+                    {{!-- <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-thumbs-up pr-1">
                             </i><span id="display_post_recent_thumbs_up">21</span></a></li>
                     <li class="list-inline-item"><a href="#" class="white-text"><i class="far fa-thumbs-down pr-1">
-                            </i><span id="display_post_recent_thumbs_down">5</span></a></li>
+                            </i><span id="display_post_recent_thumbs_down">5</span></a></li> --}}
                 </ul>
             </div>
-
         </div>
         <!-- Card -->
-
     </div>
-
-    <div class="col-md-4 mb-4">
-
+    <div class="col-md-3 mb-3">
         <!-- Card -->
         <div class="card">
-
             <!-- Card image -->
             <div class="view overlay">
-                <img class="card-img-top" img src="public/img/coding2.jpg" alt="Card image cap">
+                <img class="card-img-top" id="article_picture2" img src="public/img/coding2.jpg" alt="Card image cap">
                 <a>
                     <div class="mask rgba-white-slight"></div>
                 </a>
             </div>
-
             <!-- Button -->
             <!-- <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i
                                     class="fas fa-chevron-right pl-1"></i></a> -->
-
             <!-- Card content -->
             <div class="card-body">
-
                 <!-- Title -->
-                <h4 class="card-title"><span id="display_post_recent_title"></span>Recent Post Title</h4>
+                <h4 class="card-title"><span id="article_title2"></span></h4>
                 <hr>
                 <!-- Text -->
-                <p class="card-text"><span id="display_post_recent_body"></span>This is where a recent post
-                    text would go! The ID used is
-                    '#display_post_recent_body'</p>
-
+                <p class="card-text"><span id="article_body2"></span></p>
             </div>
-
             <!-- Card footer -->
             <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
                 <ul class="list-unstyled list-inline font-small">
                     <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><span
-                            id="display_post_recent_timestamp">04/24/2019</span>
+                            id="display_post_recent_timestamp2"></span>
                     </li>
-                    <li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-                                class="far fa-comments pr-1"></i><span id="display_post_recent_comments">12</span></a>
+                    <li class="list-inline-item pr-2"><a href="#" class="white-text" id="display_post_recent_comments2"><i class="far fa-comments pr-1"></i> Read More</a>
                     </li>
-                    <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-thumbs-up pr-1">
+                    {{!-- <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-thumbs-up pr-1">
                             </i><span id="display_post_recent_thumbs_up">21</span></a></li>
                     <li class="list-inline-item"><a href="#" class="white-text"><i class="far fa-thumbs-down pr-1">
-                            </i><span id="display_post_recent_thumbs_down">5</span></a></li>
+                            </i><span id="display_post_recent_thumbs_down">5</span></a></li> --}}
                 </ul>
             </div>
-
         </div>
         <!-- Card -->
-
     </div>
-
-    <div class="col-md-4 mb-4">
-
+    <div class="col-md-3 mb-3">
         <!-- Card -->
         <div class="card">
-
             <!-- Card image -->
             <div class="view overlay">
-                <img class="card-img-top" img src="public/img/coding3.jpg" alt="Card image cap">
+                <img class="card-img-top" id="article_picture3" src="public/img/coding3.jpg" alt="Card image cap">
                 <a>
                     <div class="mask rgba-white-slight"></div>
                 </a>
             </div>
-
             <!-- Button -->
             <!-- <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i
                                 class="fas fa-chevron-right pl-1"></i></a> -->
-
             <!-- Card content -->
             <div class="card-body">
-
                 <!-- Title -->
-                <h4 class="card-title"><span id="display_post_recent_title"></span>Recent Post Title</h4>
+                <h4 class="card-title"><span id="article_title3"></span></h4>
                 <hr>
                 <!-- Text -->
-                <p class="card-text"><span id="display_post_recent_body"></span>This is where a recent post
-                    text would go! The ID used is
-                    '#display_post_recent_body'</p>
-
+                <p class="card-text"><span id="article_body3"></span></p>
             </div>
-
             <!-- Card footer -->
             <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
                 <ul class="list-unstyled list-inline font-small">
                     <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><span
-                            id="display_post_recent_timestamp">04/24/2019</span>
+                            id="display_post_recent_timestamp3"></span>
                     </li>
-                    <li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-                                class="far fa-comments pr-1"></i><span id="display_post_recent_comments">12</span></a>
+                    <li class="list-inline-item pr-2"><a href="#" class="white-text" id="display_post_recent_comments3"><i class="far fa-comments pr-1"></i> Read More</a>
                     </li>
-                    <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-thumbs-up pr-1">
+                    {{!-- <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-thumbs-up pr-1">
                             </i><span id="display_post_recent_thumbs_up">21</span></a></li>
                     <li class="list-inline-item"><a href="#" class="white-text"><i class="far fa-thumbs-down pr-1">
-                            </i><span id="display_post_recent_thumbs_down">5</span></a></li>
+                            </i><span id="display_post_recent_thumbs_down">5</span></a></li> --}}
                 </ul>
             </div>
-
         </div>
         <!-- Card -->
-
     </div>
-
+    <div class="col-md-3 mb-3">
+        <!-- Card -->
+        <div class="card">
+            <!-- Card image -->
+            <div class="view overlay">
+                <img class="card-img-top" id="article_picture4" src="public/img/coding3.jpg" alt="Card image cap">
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+            <!-- Button -->
+            <!-- <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i
+                                class="fas fa-chevron-right pl-1"></i></a> -->
+            <!-- Card content -->
+            <div class="card-body">
+                <!-- Title -->
+                <h4 class="card-title"><span id="article_title4"></span></h4>
+                <hr>
+                <!-- Text -->
+                <p class="card-text"><span id="article_body4"></span></p>
+            </div>
+            <!-- Card footer -->
+            <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
+                <ul class="list-unstyled list-inline font-small">
+                    <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><span
+                            id="display_post_recent_timestamp4"></span>
+                    </li>
+                    <li class="list-inline-item pr-2">
+                        <a href="#" class="white-text" id="display_post_recent_comments4"><i class="far fa-comments pr-1"></i> Read More</a>
+                    </li>
+                    {{!-- <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-thumbs-up pr-1">
+                            </i><span id="display_post_recent_thumbs_up">21</span></a></li>
+                    <li class="list-inline-item"><a href="#" class="white-text"><i class="far fa-thumbs-down pr-1">
+                            </i><span id="display_post_recent_thumbs_down">5</span></a></li> --}}
+                </ul>
+            </div>
+        </div>
+        </div>
+        </div>
+        <!-- Card -->
+<div class="row wow fadeIn">
+    <div class="col-md-3 mb-3">
+         <!-- Card -->
+        <div class="card">
+            <!-- Card image -->
+            <div class="view overlay">
+                <img class="card-img-top" id="article_picture5" src="public/img/coding.jpg" alt="Card image cap">
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+            <!-- Button -->
+            <!-- <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i
+                                class="fas fa-chevron-right pl-1"></i></a> -->
+            <!-- Card content -->
+            <div class="card-body">
+                <!-- Title -->
+                <h4 class="card-title"><span id="article_title5"></span></h4>
+                <hr>
+                <!-- Text -->
+                <p class="card-text"><span id="article_body5"></span></p>
+            </div>
+            <!-- Card footer -->
+            <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
+                <ul class="list-unstyled list-inline font-small">
+                    <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><span
+                            id="display_post_recent_timestamp5"></span>
+                    </li>
+                    <li class="list-inline-item pr-2"><a href="#" class="white-text" id="display_post_recent_comments5"><i class="far fa-comments pr-1"></i> Read More</a>
+                    </li>
+                    {{!-- <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-thumbs-up pr-1">
+                            </i><span id="display_post_recent_thumbs_up">21</span></a></li>
+                    <li class="list-inline-item"><a href="#" class="white-text"><i class="far fa-thumbs-down pr-1">
+                            </i><span id="display_post_recent_thumbs_down">5</span></a></li> --}}
+                </ul>
+            </div>
+        </div>
+        <!-- Card -->
+    </div>
+    <div class="col-md-3 mb-3">
+        <!-- Card -->
+        <div class="card">
+            <!-- Card image -->
+            <div class="view overlay">
+                <img class="card-img-top" id="article_picture6" src="public/img/coding2.jpg" alt="Card image cap">
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+            <!-- Button -->
+            <!-- <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i
+                                    class="fas fa-chevron-right pl-1"></i></a> -->
+            <!-- Card content -->
+            <div class="card-body">
+                <!-- Title -->
+                <h4 class="card-title"><span id="article_title6"></span></h4>
+                <hr>
+                <!-- Text -->
+                <p class="card-text"><span id="article_body6"></span></p>
+            </div>
+            <!-- Card footer -->
+            <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
+                <ul class="list-unstyled list-inline font-small">
+                    <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><span
+                            id="display_post_recent_timestamp6"></span>
+                    </li>
+                    <li class="list-inline-item pr-2"><a href="#" class="white-text" id="display_post_recent_comments6"><i class="far fa-comments pr-1"></i> Read More</a>
+                    </li>
+                    {{!-- <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-thumbs-up pr-1">
+                            </i><span id="display_post_recent_thumbs_up">21</span></a></li>
+                    <li class="list-inline-item"><a href="#" class="white-text"><i class="far fa-thumbs-down pr-1">
+                            </i><span id="display_post_recent_thumbs_down">5</span></a></li> --}}
+                </ul>
+            </div>
+        </div>
+        <!-- Card -->
+    </div>
+    <div class="col-md-3 mb-3">
+        <!-- Card -->
+        <div class="card">
+            <!-- Card image -->
+            <div class="view overlay">
+                <img class="card-img-top" id="article_picture7" src="public/img/coding3.jpg" alt="Card image cap">
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+            <!-- Button -->
+            <!-- <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i
+                                class="fas fa-chevron-right pl-1"></i></a> -->
+            <!-- Card content -->
+            <div class="card-body">
+                <!-- Title -->
+                <h4 class="card-title"><span id="article_title7"></span></h4>
+                <hr>
+                <!-- Text -->
+                <p class="card-text"><span id="article_body7"></span></p>
+            </div>
+            <!-- Card footer -->
+            <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
+                <ul class="list-unstyled list-inline font-small">
+                    <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><span
+                            id="display_post_recent_timestamp7"></span>
+                    </li>
+                    <li class="list-inline-item pr-2"><a href="#" class="white-text" id="display_post_recent_comments7"><i class="far fa-comments pr-1"></i> Read More</a>
+                    </li>
+                    {{!-- <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-thumbs-up pr-1">
+                            </i><span id="display_post_recent_thumbs_up">21</span></a></li>
+                    <li class="list-inline-item"><a href="#" class="white-text"><i class="far fa-thumbs-down pr-1">
+                            </i><span id="display_post_recent_thumbs_down">5</span></a></li> --}}
+                </ul>
+            </div>
+        </div>
+        <!-- Card -->
+    </div>
+    <div class="col-md-3 mb-3">
+        <!-- Card -->
+        <div class="card">
+            <!-- Card image -->
+            <div class="view overlay">
+                <img class="card-img-top" id="article_picture8" src="public/img/coding3.jpg" alt="Card image cap">
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+            <!-- Button -->
+            <!-- <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i
+                                class="fas fa-chevron-right pl-1"></i></a> -->
+            <!-- Card content -->
+            <div class="card-body">
+                <!-- Title -->
+                <h4 class="card-title"><span id="article_title8"></span></h4>
+                <hr>
+                <!-- Text -->
+                <p class="card-text"><span id="article_body8"></span></p>
+            </div>
+            <!-- Card footer -->
+            <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
+                <ul class="list-unstyled list-inline font-small">
+                    <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i><span
+                            id="display_post_recent_timestamp8"></span>
+                    </li>
+                    <li class="list-inline-item pr-2"><a href="#" class="white-text" id="display_post_recent_comments8"><i class="far fa-comments pr-1"></i> Read More</a>
+                    </li>
+                    {{!-- <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-thumbs-up pr-1">
+                            </i><span id="display_post_recent_thumbs_up">21</span></a></li>
+                    <li class="list-inline-item"><a href="#" class="white-text"><i class="far fa-thumbs-down pr-1">
+                            </i><span id="display_post_recent_thumbs_down">5</span></a></li> --}}
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-<div class="row wow fadeIn">
-    <!-- Bottom Row Begins -->
-
-    <!-- Thread Create Begins -->
-    <div class="col-md-12 mb-5">
-        <div class="card">
-            <h5 class="card-header h5">Create Thread</h5>
-            <div class="card-body">
-                <h5 class="card-title">Thread Author (Guest)</h5>
-
-                <form id="post_forum">
-                    <div class="form-group shadow-textarea">
-                        <i class="fas fa-user prefix"></i>
-                        <label for="CHANGE_THIS">Thread Title</label>
-                        <input type="text" id="post_title" class="form-control">
-
-                        <i class="fas fa-user prefix pt-1"></i>
-                        <label for="CHANGE_THIS">Thread Category</label>
-                        <!-- <input type="text" id="post_category" class="form-control"> -->
-                        <select class="custom-select" id="post_category"></select>
-
-                        <i class="fas fa-users prefix pt-1"></i>
-                        <label for="CHANGE_THIS">Thread Body</label>
-                        <textarea class="form-control z-depth-1" id="post_body" rows="3"
-                            placeholder="Write something here..."></textarea>
-
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit Thread</button>
-           
-            </div>
-             </form>
-        </div>
-    </div>
-
-    <!-- Thread Create Ends -->
-
+         
+</div>
     
+<!--Modal: Login / Register Form-->
+<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <!--Modal: Login & Register tabs-->
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Modal cascading tabs-->
+      <div class="modal-c-tabs">
+        <!-- Nav tabs -->
+        <ul class="nav md-pills nav-justified pills-primary mt-4 mx-4" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab"><i class="fas fa-user mr-1"></i>
+              Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#panel2" role="tab"><i class="fas fa-user-plus mr-1"></i>
+              Register</a>
+          </li>
+        </ul>
+        <!-- Tab panels -->
+        <div class="tab-content pt-3">
+          <!--Panel 1-->
+          <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
+            <!--Body-->
+            <div class="modal-body mb-1">
+              <div class="md-form form-sm">
+                <i class="fas fa-envelope prefix"></i>
+                <input type="text" id="username" class="form-control form-control-sm">
+                <label for="form11">Your email</label>
+              </div>
+              <div class="md-form form-sm">
+                <i class="fas fa-lock prefix"></i>
+                <input type="password" id="password" class="form-control form-control-sm">
+                <label for="form12">Your password</label>
+              </div>
+              <div class="text-center mt-2">
+                <button class="btn btn-primary" data-dismiss="modal" id="button_modal_login">Log in <i class="fas fa-sign-in ml-1"></i></button>
+              </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer display-footer">
+              <div class="options text-center text-md-right mt-1">
+                <p>Not a member? <a href="#" class="blue-text">Sign Up</a></p>
+                <p>Forgot <a href="#" class="blue-text">Password?</a></p>
+              </div>
+              <button type="button" class="btn btn-outline-primary waves-effects ml-auto" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          <!--/.Panel 1-->
+          <!--Panel 2-->
+          <div class="tab-pane fade" id="panel2" role="tabpanel">
+            <!--Body-->
+            <div class="modal-body">
+              <div class="md-form form-sm">
+                <i class="fas fa-envelope prefix"></i>
+                <input type="text" id="personalnameRegister" class="form-control form-control-sm">
+                <label for="form13">Your Name</label>
+              </div>
+              <div class="md-form form-sm">
+                <i class="fas fa-envelope prefix"></i>
+                <input type="text" id="emailInputRegister" class="form-control form-control-sm">
+                <label for="form13">Your Email</label>
+              </div>
+              <div class="md-form form-sm">
+                <i class="fas fa-lock prefix"></i>
+                <input type="password" id="passwordInputRegister" class="form-control form-control-sm">
+                <label for="form14">Your password</label>
+              </div>
+              <div class="md-form form-sm">
+                <i class="fas fa-lock prefix"></i>
+                <input type="password" id="confirmationpassword" class="form-control form-control-sm">
+                <label for="form15">Repeat password</label>
+              </div>
+              <div class="text-center form-sm mt-2">
+                <button class="btn btn-primary" data-dismiss="modal" id="button_modal_register">Sign up <i class="fas fa-sign-in ml-1"></i></button>
+              </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+              <div class="options text-right">
+                <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
+              </div>
+              <button type="button" class="btn btn-outline-primary waves-effect ml-auto" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          <!--/.Panel 2-->
+          
+        </div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+  <!--/Modal: Login & Register tabs-->
+</div>
 
-</div> <!-- Bottom Row Ends -->
-
+<!--Modal: Login / Register Form-->
+{{!-- <!-- Grid row -->
+<div class="row">
+  <!--Grid column-->
+  <div class="col-md-8 col-xl-6">
+    <div class="text-center">
+      <a href="" class="btn btn-default btn-rounded my-4" data-toggle="modal" data-target="#modalLRForm">Launch
+        Modal LogIn/Register <i class="fas fa-eye ml-1"></i></a>
+    </div>
+  </div>
+  <!--Grid column-->
+</div>
+<!-- Grid row --> --}}

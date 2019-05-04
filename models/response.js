@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
   Response.associate = function (models) {
-    // A response should belong to a forum post
+    // A response should belong to a forum Thread
     Response.belongsTo(models.Forum, {
       foreignKey: {
         allowNull: false
@@ -17,10 +17,10 @@ module.exports = function (sequelize, DataTypes) {
     });
   };
   Response.associate = function (models) {
-    // A response should belong to a forum post
+    // A response should belong to an Author
     Response.belongsTo(models.Author, {
       foreignKey: {
-        allowNull: false
+        allowNull: false,
       }
     });
   };

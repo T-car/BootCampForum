@@ -7,79 +7,69 @@
             <h5 class="card-header h5"><span id="display_title">{{post_title}}</span></h5>
             <div class="card-body">
 
-                <h5 class="card-title"><span id="display_author">Thread Author</span></h5>
+                <h5 class="card-title">{{forum_name}}</h5>
                 <p class="card-text"><span id="display_body">{{post_body}}</span>
                 </p>
                 <a href="/api/edit/{{id}}" class="btn btn-primary">Edit Thread</a>
-                <button type="button" class="btn btn-primary display_post_delete" data-threadid="{{id}}">Delete Thread</button>
+                <button type="button" class="btn btn-primary display_post_delete" data-threadid="{{id}}">Delete
+                    Thread</button>
 
             </div>
         </div>
-         <div class="rounded-bottom cloudy-knoxville-gradient lighten-1 text-center pt-3">
-                <ul class="list-unstyled list-inline font-medium">
-                    <li class="list-inline-item pr-2 black-text"><i class="far fa-clock pr-1"></i><span
-                            id="display_post_recent_timestamp">04/24/2019</span>
-                    </li>
-                    <li class="list-inline-item pr-2"><a href="#" class="black-text"><i
-                                class="far fa-comments pr-1"></i><span id="display_post_recent_comments">12</span></a>
-                    </li>
-                    <li class="list-inline-item pr-2"><a href="#" class="black-text"><i class="far fa-thumbs-up pr-1">
-                            </i><span id="display_post_recent_thumbs_up">21</span></a></li>
-                    <li class="list-inline-item"><a href="#" class="black-text"><i class="far fa-thumbs-down pr-1">
-                            </i><span id="display_post_recent_thumbs_down">5</span></a></li>
-                </ul>
-            </div>
+        <div class="rounded-bottom cloudy-knoxville-gradient lighten-1 text-center pt-3">
+            <ul class="list-unstyled list-inline font-medium">
+                <li class="list-inline-item pr-2 black-text"><i class="far fa-clock pr-1"></i><span
+                        id="display_post_recent_timestamp">04/24/2019</span>
+                </li>
+                <li class="list-inline-item pr-2"><a href="#" class="black-text"><i
+                            class="far fa-comments pr-1"></i><span id="display_post_recent_comments">12</span></a>
+                </li>
+                <li class="list-inline-item pr-2"><a href="#" class="black-text"><i class="far fa-thumbs-up pr-1">
+                        </i><span id="display_post_recent_thumbs_up">21</span></a></li>
+                <li class="list-inline-item"><a href="#" class="black-text"><i class="far fa-thumbs-down pr-1">
+                        </i><span id="display_post_recent_thumbs_down">5</span></a></li>
+            </ul>
+        </div>
     </div>
     {{/with}}
 </div>
 
+<!--Comments-->
+{{#each forums.Responses}}
+<div class="media">
+    <img class="d-flex rounded-circle avatar z-depth-1-half mr-3"
+        src="https://media0.giphy.com/media/uH7JvseKVMojS/giphy.gif" alt="Avatar" height="110px">
+    <div class="media-body">
+        <h5 class="mt-0 font-weight-bold blue-text">{{AuthorForumName}}</h5>
+        {{post_response}}
+        <div class="rounded-bottom text-left pt-3 pb-4">
+            <ul class="list-unstyled list-inline font-small">
+                <li class="list-inline-item pr-2 black-text"><i class="far fa-clock pr-1"></i><span
+                        id="display_post_recent_timestamp">{{updatedAt}}</span>
+                </li>
+                <li class="list-inline-item pr-2"><a href="#" class="black-text"><i
+                            class="far fa-comments pr-1"></i><span id="display_post_recent_comments">12</span></a></li>
+                <li class="list-inline-item pr-2"><a href="#" class="black-text"><i class="far fa-thumbs-up pr-1">
+                        </i><span id="display_post_recent_thumbs_up">21</span></a></li>
+                <li class="list-inline-item"><a href="#" class="black-text"><i class="far fa-thumbs-down pr-1">
+                        </i><span id="display_post_recent_thumbs_down">5</span></a></li>
+            </ul>
+        </div>
 
 
-   
-        <p></p>
-        
-        
+    </div>
+</div>
+{{/each}}
 
-
- <!--Comments-->
- {{#each forums.Responses}}
-            <div class="media">
-                <img class="d-flex rounded-circle avatar z-depth-1-half mr-3"
-                    src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" alt="Avatar">
-                <div class="media-body">
-                    <h5 class="mt-0 font-weight-bold blue-text">{{Author.name}}</h5>
-                    {{post_response}}
-                    <div class="rounded-bottom text-left pt-3 pb-4">
-                        <ul class="list-unstyled list-inline font-small">
-                            <li class="list-inline-item pr-2 black-text"><i class="far fa-clock pr-1"></i><span
-                                    id="display_post_recent_timestamp">04/24/2019</span>
-                            </li>
-                            <li class="list-inline-item pr-2"><a href="#" class="black-text"><i
-                                        class="far fa-comments pr-1"></i><span
-                                        id="display_post_recent_comments">12</span></a></li>
-                            <li class="list-inline-item pr-2"><a href="#" class="black-text"><i
-                                        class="far fa-thumbs-up pr-1"> </i><span
-                                        id="display_post_recent_thumbs_up">21</span></a></li>
-                            <li class="list-inline-item"><a href="#" class="black-text"><i
-                                        class="far fa-thumbs-down pr-1"> </i><span
-                                        id="display_post_recent_thumbs_down">5</span></a></li>
-                        </ul>
-                    </div>
-
-
-                </div>
-            </div>
-            {{/each}}
-
-            <div class="media mt-3 shadow-textarea">
-                <img class="d-flex rounded-circle avatar z-depth-1-half mr-3" src="../public/img/guestpic.jpg"
-                    alt="Generic placeholder image">
-                <div class="media-body pb-4">
-                    <h5 class="mt-0 font-weight-bold blue-text">Guest User</h5>
-                    <div class="form-group basic-textarea rounded-corners">
-                        <textarea class="form-control z-depth-1" id="exampleFormControlTextarea345" rows="3"
-                            placeholder="Write your comment..."></textarea>
-                    </div>
-                    <a class="btn btn-primary" id="display_post_reply">Reply</a>
-                </div>
-            </div>
+<div class="media mt-3 shadow-textarea">
+    <img class="d-flex rounded-circle avatar z-depth-1-half mr-3" src="../public/img/guestpic.jpg"
+        alt="Generic placeholder image">
+    <div class="media-body pb-4">
+        <h5 class="mt-0 font-weight-bold blue-text">Have something to say? Add a response below!</h5>
+        <div class="form-group basic-textarea rounded-corners">
+            <textarea class="form-control z-depth-1" id="response_body" rows="3"
+                placeholder="Write your comment..."></textarea>
+        </div>
+        <a class="btn btn-primary" id="create_response">Add Response</a>
+    </div>
+</div>

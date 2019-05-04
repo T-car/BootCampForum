@@ -1,5 +1,37 @@
 <div class="row wow fadeIn">
 
+ <!-- Thread Create Begins -->
+    <div class="col-md-12 mb-5">
+        <div class="card">
+            <h5 class="card-header h5">Create Thread</h5>
+            <div class="card-body">
+                <h5 class="card-title">Thread Author (Guest)</h5>
+
+                <form id="post_forum">
+                    <div class="form-group shadow-textarea">
+                        <i class="fas fa-user prefix"></i>
+                        <label for="CHANGE_THIS">Thread Title</label>
+                        <input type="text" id="post_title" class="form-control">
+
+                        <i class="fas fa-user prefix pt-1"></i>
+                        <label for="CHANGE_THIS">Thread Category</label>
+                        <!-- <input type="text" id="post_category" class="form-control"> -->
+                        <select class="custom-select" id="post_category"></select>
+
+                        <i class="fas fa-users prefix pt-1"></i>
+                        <label for="CHANGE_THIS">Thread Body</label>
+                        <textarea class="form-control z-depth-1" id="post_body" rows="3"
+                            placeholder="Write something here..."></textarea>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Thread</button>
+           
+            </div>
+             </form>
+        </div>
+    </div>
+
+    <!-- Thread Create Ends -->
     <!--Grid column-->
     {{#each forums}}
     <div class="col-md-12 mb-5">
@@ -7,9 +39,8 @@
             <h5 class="card-header h5"><span id="display_title">{{post_title}}</span></h5>
             <div class="card-body">
 
-                <h5 class="card-title"><span id="display_author">{{forum_name}}</span></h5>
-                <p class="card-text"><span id="display_body">{{post_body}}</span>
-                </p>
+                <h5 class="card-title">{{forum_name}}</h5>
+                <p class="card-text">{{post_body}}</p>
                 <a href="/forum/{{id}}" class="btn btn-primary">Display Thread</a>
                 <a href="/api/edit/{{id}}" class="btn btn-primary">Edit Thread</a>
                 <button type="button" class="btn btn-primary display_post_delete" data-threadid="{{id}}">Delete
@@ -19,7 +50,7 @@
             <div class="rounded-bottom cloudy-knoxville-gradient lighten-1 text-center pt-3">
                 <ul class="list-unstyled list-inline font-medium">
                     <li class="list-inline-item pr-2 black-text"><i class="far fa-clock pr-1"></i><span
-                            id="display_post_recent_timestamp">04/24/2019</span>
+                            id="display_post_recent_timestamp">{{createdAt}}</span>
                     </li>
                     <li class="list-inline-item pr-2"><a href="#" class="black-text"><i
                                 class="far fa-comments pr-1"></i><span id="display_post_recent_comments">12</span></a>
@@ -36,113 +67,3 @@
     <p>Nothing to show, sorry!</p>
     {{/each}}
 </div>
-
-
-
-
-
-{{!-- <!--Comments-->
-            <div class="media">
-                <img class="d-flex rounded-circle avatar z-depth-1-half mr-3"
-                    src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" alt="Avatar">
-                <div class="media-body">
-                    <h5 class="mt-0 font-weight-bold blue-text">Anna Smith</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras
-                    purus
-                    odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                    fringilla. Donec lacinia congue felis in faucibus.
-                    <div class="rounded-bottom text-left pt-3 pb-4">
-                        <ul class="list-unstyled list-inline font-small">
-                            <li class="list-inline-item pr-2 black-text"><i class="far fa-clock pr-1"></i><span
-                                    id="display_post_recent_timestamp">04/24/2019</span>
-                            </li>
-                            <li class="list-inline-item pr-2"><a href="#" class="black-text"><i
-                                        class="far fa-comments pr-1"></i><span
-                                        id="display_post_recent_comments">12</span></a></li>
-                            <li class="list-inline-item pr-2"><a href="#" class="black-text"><i
-                                        class="far fa-thumbs-up pr-1"> </i><span
-                                        id="display_post_recent_thumbs_up">21</span></a></li>
-                            <li class="list-inline-item"><a href="#" class="black-text"><i
-                                        class="far fa-thumbs-down pr-1"> </i><span
-                                        id="display_post_recent_thumbs_down">5</span></a></li>
-                        </ul>
-                    </div>
-
-
-                </div>
-            </div>
-            <div class="media mt-3">
-                <img class="d-flex rounded-circle avatar z-depth-1-half mr-3"
-                    src="https://mdbootstrap.com/img/Photos/Avatars/avatar-10.jpg" alt="Avatar">
-                <div class="media-body">
-                    <h5 class="mt-0 font-weight-bold blue-text">Caroline Horwitz</h5>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis odit minima eaque dignissimos
-                    recusandae
-                    officiis commodi nulla est, tempore atque voluptas non quod maxime, iusto, debitis aliquid? Iure
-                    ipsum,
-                    itaque.
-                    <div class="rounded-bottom text-left pt-3 pb-4">
-                        <ul class="list-unstyled list-inline font-small">
-                            <li class="list-inline-item pr-2 black-text"><i class="far fa-clock pr-1"></i><span
-                                    id="display_post_recent_timestamp">04/24/2019</span>
-                            </li>
-                            <li class="list-inline-item pr-2"><a href="#" class="black-text"><i
-                                        class="far fa-comments pr-1"></i><span
-                                        id="display_post_recent_comments">12</span></a></li>
-                            <li class="list-inline-item pr-2"><a href="#" class="black-text"><i
-                                        class="far fa-thumbs-up pr-1"> </i><span
-                                        id="display_post_recent_thumbs_up">21</span></a></li>
-                            <li class="list-inline-item"><a href="#" class="black-text"><i
-                                        class="far fa-thumbs-down pr-1"> </i><span
-                                        id="display_post_recent_thumbs_down">5</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="media mt-3 shadow-textarea">
-                <img class="d-flex rounded-circle avatar z-depth-1-half mr-3" src="../public/img/guestpic.jpg"
-                    alt="Generic placeholder image">
-                <div class="media-body pb-4">
-                    <h5 class="mt-0 font-weight-bold blue-text">Guest User</h5>
-                    <div class="form-group basic-textarea rounded-corners">
-                        <textarea class="form-control z-depth-1" id="exampleFormControlTextarea345" rows="3"
-                            placeholder="Write your comment..."></textarea>
-                    </div>
-                    <a href="#!" class="btn btn-primary" id="display_post_reply">Reply</a>
-                </div>
-            </div>
-
-                <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header text-center">
-                      <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body mx-3">
-                      <div class="md-form mb-5">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <input type="email" id="defaultForm-email" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
-                      </div>
-              
-                      <div class="md-form mb-4">
-                        <i class="fas fa-lock prefix grey-text"></i>
-                        <input type="password" id="defaultForm-pass" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
-                      </div>
-              
-                    </div>
-                    <div class="modal-footer d-flex justify-content-center">
-                      <button class="btn btn-default">Login</button>
-                    </div>
-                  </div>
-                </div>
-              </div> --}}
-
-
-<!--Main layout-->
