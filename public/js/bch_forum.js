@@ -1,4 +1,3 @@
-
 var bodyInput = $("#post_body");
 var titleInput = $("#post_title");
 var cmsForm = $("#post_forum");
@@ -41,21 +40,60 @@ function createCategoryRow(category) {
 $(cmsForm).on("submit", function handleFormSubmit(event) {
     event.preventDefault();
 
+    // Cognito Session PULL
+
+    cognitoUser.getSession(function (err, session) {
+        if (err) {
+            alert(err);
+            return;
+        }
+
+        var CurrentIDToken = session.getIdToken()
+        var LoggedIn = session.isValid();
+
+        console.log('session validity: ' + session.isValid());
+
+        if (LoggedIn === true) {
+            console.log('You are successfully logged in! **THIS IS WITHIN THE SUBMIT POST**')
+            
+        } else {
+            console.log('You are not logged in! Please either log in or register to continue!')
+        }
+
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: 'us-east-2:c77291cb-be87-40ed-8b14-d569895d7cd3', // your identity pool id here
+            Logins: {
+                // Change the key below according to the specific region your user pool is in.
+                'cognito-idp.us-east-2.amazonaws.com/us-east-2_rzFJkIGfu': session.getIdToken().getJwtToken()
+            }
+        });
+
+        console.log('Access Token + ' + session.getAccessToken().getJwtToken());
+        console.log('****************************************************************')
+        console.dir(session.getIdToken())
+
+        // Instantiate aws sdk service objects now that the credentials have been updated.
+        // example: var s3 = new AWS.S3();
+        var newPost = {
+            post_title: titleInput.val().trim(),
+            post_body: bodyInput.val().trim(),
+            CategoryId: categorySelect.val(),
+            forum_name: CurrentIDToken.payload.name
+        };
+    
+        console.log(newPost);
+    
+        submitPost(newPost);
+        
+    });
+
+
     // Wont submit the post if we are missing a body or a title
     //if (!titleInput.val().trim() || !bodyInput.val().trim()) {
     //return;
     //}
     // Constructing a newPost object to hand to the database
-    var newPost = {
-        post_title: titleInput.val().trim(),
-        post_body: bodyInput.val().trim(),
-        CategoryId: categorySelect.val(),
-        AuthorName: 1
-    };
-
-    console.log(newPost);
-
-    submitPost(newPost);
+    
 });
 
 // Submits a new post and brings user to blog page upon completion
@@ -64,7 +102,6 @@ function submitPost(Post) {
         window.location.href = "/forum";
     });
 }
-
 
 
 // Delete Thread
@@ -111,17 +148,17 @@ $(document).ready(function () {
 function editPost(EPost) {
     console.log("editPost is running!")
     $.ajax({
-            type: "PUT",
-            url: "/api/forums/" + postEditId,
-            data: EPost,
-            error: function (req, err) {
-                console.log('my message' + err);
-            },
-            success: function (response) {
+        type: "PUT",
+        url: "/api/forums/" + postEditId,
+        data: EPost,
+        error: function (req, err) {
+            console.log('my message' + err);
+        },
+        success: function (response) {
 
-                console.log(response); //does not print in the console
-            }
-        })
+            console.log(response); //does not print in the console
+        }
+    })
         .then(function () {
             window.location.href = "/forum";
         });
@@ -316,6 +353,7 @@ function login() {
             var newAuthor = {
                 name: IDToken.payload.name,
                 email: username,
+                forum_name: IDToken.payload.name
             };
 
             console.log(newAuthor);
@@ -346,16 +384,16 @@ function submitAuthor(Author) {
 
 function logout() {
 
-if (cognitoUser != null) {
-    cognitoUser.signOut();
-    console.log("you have been signed out")
+    if (cognitoUser != null) {
+        cognitoUser.signOut();
+        console.log("you have been signed out")
 
+    }
 }
-}
 
 
 
-  var data = {
+var data = {
     UserPoolId: 'us-east-2_rzFJkIGfu', // your user pool id here
     ClientId: '3hte44uuqb3nsakj11mjtb86s0' // your app client id here
 };
@@ -393,10 +431,11 @@ if (cognitoUser != null) {
         });
 
         console.log('Access Token + ' + session.getAccessToken().getJwtToken());
-            console.log('****************************************************************')
-            console.dir(session.getIdToken())
+        console.log('****************************************************************')
+        console.dir(session.getIdToken())
 
         // Instantiate aws sdk service objects now that the credentials have been updated.
         // example: var s3 = new AWS.S3();
 
-    }); }
+    });
+}

@@ -4,7 +4,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [10]
+        len: [3,3000]
       }
     }
   });

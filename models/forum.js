@@ -29,8 +29,12 @@ module.exports = function(sequelize, DataTypes) {
         // A Post can't be created without an Author due to the foreign key constraint
         Forum.belongsTo(models.Author, {
           foreignKey: {
-            allowNull: false
+            allowNull: false,
+            name: 'forum_name'
           }
+          // },
+          // targetKey: 'forum_name',
+          // constraints: false
         });
     };
 

@@ -52,7 +52,7 @@ db.sequelize
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({}).then(function() { // pass { force: true } parameter to overwrite the table with an empty one
+db.sequelize.sync({ force:true }).then(function() { // pass { force: true } parameter to overwrite the table with an empty one
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
