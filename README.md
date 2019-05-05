@@ -1,4 +1,7 @@
 # BootCampForum
+
+![Homepage](https://github.com/kamalnyc17/kamalnyc17.github.io/blob/master/assets/images/Boot%20Camp%20Forum.jpg)
+## Overview
 1. This is a team project that I have worked with five other classmets. The purpose of this website is to provide a Q & A forum for the coding
 students of Columbia University.
 
