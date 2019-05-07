@@ -224,7 +224,7 @@ function editPost(EPost) {
 
 // OnClick for modal button to register new account, verify, and login
 
-$('#modal_register').on("click", function () {
+$('#button_modal_register').on("click", function () {
 
     registerButton();
 
